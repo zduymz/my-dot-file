@@ -1,0 +1,24 @@
+alias k=kubectl
+source <(kubectl completion bash)
+wget -O /tmp/kube-ps1.sh 'https://raw.githubusercontent.com/jonmosco/kube-ps1/master/kube-ps1.sh'
+source "/tmp/kube-ps1.sh"
+# zshrc
+#alias kps='PROMPT=`kube_ps1`$PROMPT'
+# bashrc
+PS1='[\u@\h \W $(kube_ps1)]\$ '
+
+alias kns='kubectl config set-context $(kubectl config current-context) --namespace '
+alias kuc='kubectl config use-context'
+alias kgetwide='kubectl get -o wide'
+alias kgetjson='kubectl get -o json'
+alias kgetyaml='kubectl get -o yaml'
+alias kgp='kubectl get po -o wide'
+alias kgd='kubectl get deploy -o wide'
+alias kgs='kubectl get svc -o wide'
+alias kgrs='kubectl get rs -o wide'
+alias kgs='kubectl get secret -o wide'
+alias kgcm='kubectl get cm -o wide'
+alias kgcrd='kubectl get crd -o wide'
+alias kgn='kubectl get no -o wide'
+
+export KUBE_EDITOR=vim
